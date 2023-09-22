@@ -35,20 +35,45 @@ router.post('/', async (req, res) => {
   }
 });
 
+// router.put('/:id', async (req, res) => {
+//   try {
+//     console.log('hit');
+//     console.log(req.body);
+//     const { category_name } = req.body;
+//     await Category.update({id:req.params.id, category_name:category_name}, { where: {id: req.params.id} });
+//   } catch (err) {
+//     res.status(500).json({ message: 'update failed' + err});
+//   }
+// });
+
 router.put('/:id', async (req, res) => {
   try {
-    const newCategory = await Category.update(req.body, { where: {id: req.params.id} });
+    const category = await Category.update(req.body, {
+      where: { id: req.params.id },
+    });
+    res.status(200).json(category);
   } catch (err) {
-    res.status(500).json({ message: 'update failed'});
+    res.status(400).json({ message: 'update failed' });
   }
 });
 
+// router.delete('/:id', async (req, res) => {
+//   // delete a category by its `id` value
+//   try {
+//     const deleted = await Category.destroy({where: { id: req.params.id }});
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
+
 router.delete('/:id', async (req, res) => {
-  // delete a category by its `id` value
   try {
-    const deleted = await Category.destroy({where: { id: req.params.id }});
+    const category = await Category.destroy(res.body, {
+      where: { id: res.params.id },
+    });
+    res.status(200).json(category);
   } catch (err) {
-    res.status(500).json(err);
+    res.status(400).json({ message: 'delete failed' });
   }
 });
 
