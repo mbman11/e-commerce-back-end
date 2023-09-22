@@ -4,3 +4,4 @@
 
 ## gtihub repo : https://github.com/mbman11/e-commerce-back-end.git
 
+## video link: https://drive.google.com/file/d/19IyLYRCdYM5YJpB40ITaJJfzsD2Muaky/view
